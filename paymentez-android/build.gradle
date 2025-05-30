@@ -1,7 +1,16 @@
 //apply plugin: 'com.android.library'
+
+
+
 plugins {
     id 'com.android.library'
     id 'maven-publish'
+}
+
+ext {
+    PUBLISH_GROUP_ID = 'com.paymentez.android'
+    PUBLISH_ARTIFACT_ID = 'paymentez-java-sdk'
+    PUBLISH_VERSION = android.defaultConfig.versionName
 }
 android {
     compileSdkVersion 30
@@ -49,4 +58,18 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     //implementation files('libs\\devicecollector-sdk-2.5.jar')
     implementation files('libs\\kount-data-collector-3.2.jar')
+}
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+
+                groupId project.ext.PUBLISH_GROUP_ID
+                artifactId project.ext.PUBLISH_ARTIFACT_ID
+                version project.ext.PUBLISH_VERSION
+
+                from components.release
+            }
+        }
+    }
 }
