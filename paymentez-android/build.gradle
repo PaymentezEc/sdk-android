@@ -8,8 +8,8 @@ plugins {
 }
 
 ext {
-    PUBLISH_GROUP_ID = 'com.paymentez.android'
-    PUBLISH_ARTIFACT_ID = 'paymentez-java-sdk'
+    PUBLISH_GROUP_ID = 'com.github.PaymentezEc'
+    PUBLISH_ARTIFACT_ID = 'sdk-android'
 }
 android {
     compileSdkVersion 30
